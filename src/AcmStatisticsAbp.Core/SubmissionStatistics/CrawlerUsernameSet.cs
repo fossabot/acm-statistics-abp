@@ -15,28 +15,8 @@ namespace AcmStatisticsAbp.SubmissionStatistics
     /// 存储了某个用户在查题网站上的用户名，某个用户可以有多个 Set，方便切换
     /// </summary>
     [Table("crawler_username_set")]
-    public class CrawlerUsernameSet : Entity<long>, IFullAudited<User>, IExtendableObject
+    public class CrawlerUsernameSet : FullAuditedEntity<long, User>, IFullAudited<User>, IExtendableObject
     {
-        public DateTime CreationTime { get; set; }
-
-        public long? CreatorUserId { get; set; }
-
-        public DateTime? LastModificationTime { get; set; }
-
-        public long? LastModifierUserId { get; set; }
-
-        public User CreatorUser { get; set; }
-
-        public User LastModifierUser { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletionTime { get; set; }
-
-        public long? DeleterUserId { get; set; }
-
-        public User DeleterUser { get; set; }
-
         public string ExtensionData { get; set; }
 
         /// <summary>
