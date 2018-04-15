@@ -4,7 +4,7 @@
 
 namespace AcmStatisticsAbp.SubmissionStatistics
 {
-    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using Abp.Domain.Entities;
@@ -22,6 +22,7 @@ namespace AcmStatisticsAbp.SubmissionStatistics
         /// <summary>
         /// Gets or sets 使用此 Set 的用户名
         /// </summary>
+        [Required]
         public User User { get; set; }
 
         public long UserId { get; set; }
@@ -43,5 +44,10 @@ namespace AcmStatisticsAbp.SubmissionStatistics
         /// </summary>
         /// <param name="usernames"></param>
         public void SetUsernames(Usernames usernames) => this.SetData("usernames", usernames);
+
+        /// <summary>
+        /// Gets or sets 此用户名列表的所有订阅，可以为空（没有订阅）
+        /// </summary>
+        public ICollection<CrawlerSubscription> CrawlerSubscriptions { get; set; }
     }
 }
