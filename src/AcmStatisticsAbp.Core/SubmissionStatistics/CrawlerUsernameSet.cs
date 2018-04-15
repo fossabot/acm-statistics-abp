@@ -15,7 +15,7 @@ namespace AcmStatisticsAbp.SubmissionStatistics
     /// 存储了某个用户在查题网站上的用户名，某个用户可以有多个 Set，方便切换
     /// </summary>
     [Table("crawler_username_set")]
-    public class CrawlerUsernameSet : FullAuditedEntity<long, User>, IFullAudited<User>, IExtendableObject
+    public class CrawlerUsernameSet : FullAuditedEntity<long, User>, IExtendableObject
     {
         public string ExtensionData { get; set; }
 
