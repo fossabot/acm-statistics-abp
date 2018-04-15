@@ -5,6 +5,7 @@
 namespace AcmStatisticsAbp.SubmissionStatistics
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// 记录用户在各个 OJ 上的用户名以及主用户名
@@ -14,6 +15,7 @@ namespace AcmStatisticsAbp.SubmissionStatistics
         /// <summary>
         /// Gets or sets 主用户名，如果在查询的时候副用户名不存在，就用这个来替换
         /// </summary>
+        [MaxLength(128)]
         public string MainUsername { get; set; }
 
         /// <summary>
