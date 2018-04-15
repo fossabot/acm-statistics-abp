@@ -12,7 +12,7 @@ namespace AcmStatisticsAbp.SubmissionStatistics
     /// <summary>
     /// 订阅。用户可以订阅某些 CrawlerUsernameSet，用来定期给用户发送报告
     /// </summary>
-    [Table("crawler_subscription")]
+    [Table("crawler_subscriptions")]
     public class CrawlerSubscription : CreationAuditedEntity<long, User>
     {
         /// <summary>
