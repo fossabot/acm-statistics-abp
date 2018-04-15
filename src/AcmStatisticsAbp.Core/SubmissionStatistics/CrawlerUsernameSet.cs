@@ -6,6 +6,7 @@ namespace AcmStatisticsAbp.SubmissionStatistics
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Abp.Domain.Entities;
     using Abp.Domain.Entities.Auditing;
     using AcmStatisticsAbp.Authorization.Users;
@@ -13,6 +14,7 @@ namespace AcmStatisticsAbp.SubmissionStatistics
     /// <summary>
     /// 存储了某个用户在查题网站上的用户名，某个用户可以有多个 Set，方便切换
     /// </summary>
+    [Table("crawler_username_set")]
     public class CrawlerUsernameSet : Entity<long>, IFullAudited<User>, IExtendableObject
     {
         public DateTime CreationTime { get; set; }
@@ -51,12 +53,15 @@ namespace AcmStatisticsAbp.SubmissionStatistics
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets 用户在各个网站上的用户名
+        /// 获取用户在各个网站上的用户名，由于这里不能使用ORM的自动更新功能，必须显式设置，因此使用方法而不是属性来操作对象。
         /// </summary>
-        public Usernames Usernames
-        {
-            get => this.GetData<Usernames>("usernames");
-            set => this.SetData("usernames", value);
-        }
+        /// <returns>用户在各个网站上的用户名</returns>
+        public Usernames GetUsernames() => this.GetData<Usernames>("usernames");
+
+        /// <summary>
+        /// 设置用户在各个网站上的用户名
+        /// </summary>
+        /// <param name="usernames"></param>
+        public void SetUsernames(Usernames usernames) => this.SetData("usernames", usernames);
     }
 }
